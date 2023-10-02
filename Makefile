@@ -16,6 +16,6 @@ format:
 
 refactor: format lint
 
-deploy: 
+#deploy: echno not being developed
 
 all: install test lint format
