@@ -3,16 +3,16 @@ install:
 		pip install -r requirements.txt
 
 test:
-	python -m pytest -vv test_app.py
+	python -m pytest -vv --cov=calCLI --cov=mylib test_*.py
 
 container-lint:
 	docker run --rm -9 hadolint/hadolint < Dockerfile
 
 lint:
-	pylint --disable=R,C --extension-pkg-whitelist='pydantic' main.py --ignore-patterns=test_.*?py *.py mylib/*.py
+	pylint --disable=R,C --ignore-patterns=test_.*?py *.py mylib/*.py
 
 format:
-	black *.py
+	black *.py mylib/*.py
 
 refactor: format lint
 
